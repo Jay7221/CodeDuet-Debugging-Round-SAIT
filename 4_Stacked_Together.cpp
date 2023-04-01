@@ -32,9 +32,9 @@ void Stack ::display()
     }
     else
     {
-        Node *p;
+        Node *p = top;
 
-        while (p)
+        while (p != NULL)
         {
             cout << p->data << "\n";
             p = p->next;
@@ -45,17 +45,12 @@ void Stack ::display()
 // Push values in the stack
 void Stack ::push()
 {
-    Node *p;
-    if (top)
-    {
-        cout << "Enter data: ";
-        cin >> p->data;
-        p->next = top;
-        top = p;
-        display();
-    }
-    else
-        cout << "Stack Overflow\n";
+    Node *p = new Node();
+    cout << "Enter data: ";
+    cin >> p->data;
+    p->next = top;
+    top = p;
+    display();
 }
 
 // Pop values in the stack
@@ -83,11 +78,14 @@ void Stack::peek()
         int x;
         cin >> x;
         Node *p = top;
-        for (int i = 1; p && i <= x; i++, p = p->next)
+        for (int i = 1; (p != NULL) && i <= x; i++, p = p->next)
         {
-            if (i == x)
+            if (i == x){
                 cout << p->data << endl;
+                return ;
+            }
         }
+        cout << "Index out of bound\n";
     }
 }
 
@@ -97,7 +95,7 @@ int main()
     while (1)
     {
         cout << "MENU: \n1.display\n2.push\n3.pop\n4.peek\n";
-        char choice;
+        int choice;
         cin >> choice;
         switch (choice)
         {
@@ -108,10 +106,10 @@ int main()
             s1.push();
             break;
         case 3:
-            s1.peek();
+            s1.pop();
             break;
         case 4:
-            s1.pop();
+            s1.peek();
             break;
         default:
             return 0;
