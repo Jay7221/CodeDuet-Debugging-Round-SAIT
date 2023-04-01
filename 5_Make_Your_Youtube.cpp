@@ -24,11 +24,15 @@ public:
     }
 };
 
-void operator<<(ostream &COUT, YoutubeChannel &ytChannel)
+ostream& operator<<(ostream &COUT, YoutubeChannel &ytChannel)
 {
     COUT << "Name: " << ytChannel.Name << endl;
     COUT << "Subcribers: " << ytChannel.SubscribersCount << endl;
+    return COUT;
 };
+bool operator==(YoutubeChannel channel1, YoutubeChannel channel2){
+    return ((channel1.Name == channel2.Name) && (channel2.SubscribersCount == channel1.SubscribersCount));
+}
 
 class MyCollection
 {
@@ -46,12 +50,13 @@ public:
     }
 };
 
-void operator<<(ostream &COUT, MyCollection &myCollection)
+ostream& operator<<(ostream &COUT, MyCollection &myCollection)
 {
     for (YoutubeChannel ytchannel : myCollection.myChannels)
     {
         COUT << ytchannel << endl;
     }
+    return COUT;
 }
 
 int main()
