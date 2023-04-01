@@ -1,13 +1,10 @@
-CodeDuet 2k23 Round 3
 
-#include<iostream>
-#include<fstream>
-#include<string>
+#include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
-
-
-  /****************************************//*MERGE TWO FILES IN ONE FILE*//*******************************************************/
+/****************************************/ /*MERGE TWO FILES IN ONE FILE*/ /*******************************************************/
 
 /*Create two  files file1 ,file2
 
@@ -25,43 +22,35 @@ File2 contains :
 
 */
 
-
 int main()
 {
-    ifstream in;
-    ofstream out;
+   ifstream in;
+   ofstream out;
 
-     out.open("file1.txt"); // Write data in file1 
-     out<<"Mumbai is finicial capital of India";
-     out.close();
+   out.open("file1.txt"); // Write data in file1
+   out << "Mumbai is finicial capital of India";
+   out.close();
 
-    out.open("file2.txt"); // Write data in file2
-     out<<"Also it is capital of Maharastra";
-     out.close();
+   out.open("file2.txt"); // Write data in file2
+   out << "Also it is capital of Maharastra";
+   out.close();
 
-      out.open("file3.txt");//Write data in file3
+   out.open("file3.txt"); // Write data in file3
 
+   in.open("file1.txt"); // Read input file1
 
-    in.open("file1.txt"); //Read input file1
-   
-    string st;//Create a output string 
+   string st; // Create a output string
 
-    
-    while(in.eof()){  //Iterate in file1. Copy data from file1 to file3
-        in>>st;
-        out<<st;
-    }
+   while (in >> st)
+   {
+      out << st << ' ';
+   }
+   out << endl;
+   in.close();
+   in.open("file2.txt"); // Read input file2
 
-
-     in.open("file2.txt"); //Read input file2
-
-  while(in.eof()){ //Iterate in file2. Copy data from file2 to file3
-        in>>st;
-        out<<st;
-    }
-
-
-   
-
-
+   while (in >> st)
+   {
+      out << st << ' ';
+   }
 }
